@@ -25,7 +25,18 @@ editor  |  atom  |  1.27.2
 --- | --- | ---
 socket.io  | 채팅 및 일정 공유  |  https://socket.io
 
+### 구현 사진
+- 채팅
+![image](https://user-images.githubusercontent.com/29705928/42725317-dce4a9f2-87bc-11e8-81f7-1a7a16c8918f.png
+)
 
+- 일정 공유
+![image](https://user-images.githubusercontent.com/29705928/42725326-e8fa25fa-87bc-11e8-96b2-c708f7355dcd.png
+)
+
+
+
+### 소스코드
 ```
 //포트열기----------------------------------------------------------
 //3000포트 이용
@@ -94,7 +105,7 @@ var chat = io.of('/chat').on('connection', function(socket) {
       // room에 join한다
       socket.join(room);
     });
-  
+
     //drag start를 받고
     //해당 캘린더방에 입장되어 있는 클라이언트에게 recieve drag start를 전송한다
     socket.on('drag start', (data) => {
@@ -102,7 +113,7 @@ var chat = io.of('/chat').on('connection', function(socket) {
       var room = socket.room = data.chat_seq;
       cal.to(room).emit('recieve drag start', data);
     });
-  
+
     //draggig을 받고
     //해당 캘린더방에 입장되어 있는 클라이언트에게 recieve dragging을 전송한다
     socket.on('dragging', (data) => {
@@ -110,7 +121,7 @@ var chat = io.of('/chat').on('connection', function(socket) {
       var room = socket.room = data.chat_seq;
       cal.to(room).emit('recieve dragging', data);
     });
-  
+
     //drag stop를 받고
     //해당 캘린더방에 입장되어 있는 클라이언트에게 recieve drag stop을 전송한다
     socket.on('drag stop', (data) => {
@@ -118,7 +129,7 @@ var chat = io.of('/chat').on('connection', function(socket) {
       var room = socket.room = data.chat_seq;
       cal.to(room).emit('recieve drag stop', data);
     });
-  
+
     //reload page를 받고
     //해당 캘린더방에 입장되어 있는 클라이언트에게 recieve reload page을 전송한다
     socket.on('reload page', (data) => {
@@ -126,7 +137,7 @@ var chat = io.of('/chat').on('connection', function(socket) {
       var room = socket.room = data.chat_seq;
       cal.to(room).emit('recieve reload page', data);
     });
-  
+
     //calendar방 disconnect
     socket.on('disconnecting', (reason) => {
       //console.log('user calendar disconnected : ' + reason);
