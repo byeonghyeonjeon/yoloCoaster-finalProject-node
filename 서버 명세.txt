@@ -1,0 +1,8 @@
+﻿chattingServer.js 채팅 및 스케쥴 서버
+오른쪽 클릭하여 git bash를 켠후
+node chattingServer.js 실행
+
+만약 안되는 경우
+https://nodejs.org/en/
+에 들어가서
+8.11.3 LTS 다운
